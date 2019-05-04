@@ -12,9 +12,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val defaultTimezone = TimeZone.getDefault()
+        val timezone = TimeZone.getDefault()
 
-        timezone.text = defaultTimezone.displayName
+        defaultTimezone.text = timezone.displayName
 
         add.setOnClickListener {
             val intent = Intent(this, TimezoneSelectActivity::class.java)
