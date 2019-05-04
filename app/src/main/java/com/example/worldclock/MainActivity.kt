@@ -1,5 +1,6 @@
 package com.example.worldclock
 
+import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -20,5 +21,14 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, TimezoneSelectActivity::class.java)
             startActivityForResult(intent, 1)
         }
+
+        showWorldClocks()
+    }
+
+    private fun showWorldClocks() {
+        val pref = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val timezones = pref.getStringSet("timezone", setOf())
+
+        selectedClockList.adapter = TimezoneAdapter(this, timezones.toTypedArray())
     }
 }
