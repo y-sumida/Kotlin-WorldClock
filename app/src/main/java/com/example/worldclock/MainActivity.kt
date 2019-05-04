@@ -1,5 +1,6 @@
 package com.example.worldclock
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
@@ -14,5 +15,10 @@ class MainActivity : AppCompatActivity() {
         val defaultTimezone = TimeZone.getDefault()
 
         timezone.text = defaultTimezone.displayName
+
+        add.setOnClickListener {
+            val intent = Intent(this, TimezoneSelectActivity::class.java)
+            startActivityForResult(intent, 1)
+        }
     }
 }
